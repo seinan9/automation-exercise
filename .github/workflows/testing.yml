@@ -54,6 +54,6 @@ jobs:
       - name: "Generate XML"
         uses: actions/upload-artifact@v3
         with:
-          name: coverage_report_xml
+          name: coverage
           path: coverage.xml
           retention-days: 14
