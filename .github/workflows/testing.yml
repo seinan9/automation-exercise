@@ -52,6 +52,8 @@ jobs:
         with:
           name: coverage_report
       - name: "Generate XML"
+        run: coverage xml
+      - name: "Upload coverage report"
         uses: actions/upload-artifact@v3
         with:
           name: coverage_report_xml
