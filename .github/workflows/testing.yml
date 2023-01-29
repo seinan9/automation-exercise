@@ -14,3 +14,23 @@ jobs:
         run: pip install black
       - name: "Run style checker"
         run: black --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          python-version: '3.10'
+      - name: "Install dependencies"
+        run: pip install numpy matplotlib
+      - name: "Install testing packages"
+        run: pip install pytest coverage
+      - name: Run tests
+        run: coverage run -m pytest
+      - name: Upload coverage report"
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage_report
+          path: .coverage
+          retention-days: 1
