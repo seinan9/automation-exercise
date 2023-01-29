@@ -1,4 +1,4 @@
-name: SSE Automation Exercise
+name: SSE CI/CD
 
 on: [push]
 
