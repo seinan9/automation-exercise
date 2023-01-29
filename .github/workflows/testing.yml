@@ -1,4 +1,4 @@
-name: SSE CI/CD
+name: SSE Automation Exercise
 
 on: [push]
 
@@ -36,3 +36,24 @@ jobs:
           name: coverage_report
           path: .coverage
           retention-days: 1
+  
+  coverage_report:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: "Install coverage"
+        run: pip install coverage
+      - name: "Download artifact"
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage_report
+      - name: "Generate XML"
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage_report_xml
+          path: coverage.xml
+          retention-days: 14
