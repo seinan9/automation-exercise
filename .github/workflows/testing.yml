@@ -30,7 +30,7 @@ jobs:
         run: python -m pytest
       - name: "Run coverage"
         run: coverage run -m pytest
-      - name: Upload coverage report"
+      - name: "Upload coverage report"
         uses: actions/upload-artifact@v3
         with:
           name: coverage_report
@@ -54,6 +54,6 @@ jobs:
       - name: "Generate XML"
         uses: actions/upload-artifact@v3
         with:
-          name: coverage
+          name: coverage_report_xml
           path: coverage.xml
           retention-days: 14
